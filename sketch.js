@@ -20,6 +20,13 @@ function setup(){
   runner=createSprite(200,300);
   runner.addAnimation("run",runner_running);
  runner.scale= 0.09;
+
+ leftBoundary=createSprite(0,0,100,800);
+ leftBoundary.visible=false;
+
+rightBoundary = createSprite(410,0,100,800);
+rightBoundary.visible = false;
+
 }
 
 function draw() {
@@ -28,5 +35,11 @@ function draw() {
   if(path.y > 400){
     path.y = height/2;
   }
+  runner.x = World.mouseX;
+  edges = createEdgeSprites();
+runner.collide(edges[3]);
+runner.collide(leftBoundary);
+runner.collide(rightBoundary);
+
 drawSprites();
 }
